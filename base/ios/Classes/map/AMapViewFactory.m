@@ -162,6 +162,21 @@ static NSString *markerClickedChannelName = @"me.yohom/marker_clicked";
 
     return polylineRenderer;
   }
+  
+  if([overlay isKindOfClass:[CircleOverlay class]]){
+
+          CircleOverlay *circle = (CircleOverlay *) overlay;
+
+          MACircleRenderer * circleRenderer = [[MACircleRenderer alloc]initWithCircle:circle];
+
+          UnifiedCircleOptions *options = [circle options];
+
+          circleRenderer.fillColor = [options.fillColor hexStringToColor];
+          circleRenderer.strokeColor = [options.strokeColor hexStringToColor];
+          circleRenderer.lineWidth = options.strokeWidth;
+          circleRenderer.lineDashType = kMALineDashTypeNone;
+    return circleRenderer;
+  }
 
   return nil;
 }

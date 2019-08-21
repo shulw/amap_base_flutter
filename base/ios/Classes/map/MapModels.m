@@ -14,6 +14,10 @@
 
 @end
 
+@implementation CircleOverlay {
+
+}
+@end
 
 @implementation PolylineOverlay {
 
@@ -133,6 +137,21 @@
 
 @end
 
+
+@implementation UnifiedCircleOptions{
+
+}
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"self.center=%@", self.center];
+    [description appendFormat:@", self.fillColor=%p", self.fillColor];
+    [description appendFormat:@", self.strokeColor=%p", self.strokeColor];
+    [description appendFormat:@", self.strokeWidth=%f", self.strokeWidth];
+    [description appendFormat:@", self.radius=%i", self.radius];
+    [description appendString:@">"];
+    return description;
+}
+@end
 
 
 @implementation UnifiedMyLocationStyle {

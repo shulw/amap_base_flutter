@@ -394,6 +394,31 @@
 
 @end
 
+@implementation AddCircle {
+    MAMapView *_mapView;
+}
+- (NSObject <MapMethodHandler> *)initWith:(MAMapView *)mapView {
+    _mapView = mapView;
+    return self;
+}
+
+- (void)onMethodCall:(FlutterMethodCall *)call :(FlutterResult)result {
+    NSDictionary *paramDic = call.arguments;
+
+    NSString *optionsJson = (NSString *) paramDic[@"circleOptions"];
+
+    NSLog(@"方法marker#AddCircle ios端参数: optionsJson -> %@", optionsJson);
+    UnifiedCircleOptions *options = [UnifiedCircleOptions mj_objectWithKeyValues:optionsJson];
+
+    CLLocationCoordinate2D coordinate = [options.center toCLLocationCoordinate2D];
+    CircleOverlay *circleOverlay = [CircleOverlay circleWithCenterCoordinate:coordinate radius:options.radius];
+    circleOverlay.options = options;
+    [_mapView addOverlay:circleOverlay];
+    result(success);
+}
+
+@end
+
 @implementation AddPolyline {
     MAMapView *_mapView;
 }

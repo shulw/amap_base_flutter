@@ -284,7 +284,7 @@ object CalculateDriveRoute : SearchMethodHandler {
 }
 
 object DistanceSearchHandler : SearchMethodHandler {
-    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result?) {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         val search = DistanceSearch(AMapBasePlugin.registrar.context())
         search.setDistanceSearchListener { distanceResult, i ->
             search.setDistanceSearchListener(null)

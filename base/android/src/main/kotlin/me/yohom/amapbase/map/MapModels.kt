@@ -160,6 +160,33 @@ class UnifiedMarkerOptions(
 }
 
 
+class UnifiedCircleOptions(
+        /// 圆形区域 圆心坐标
+        private val center: LatLng,
+        /// 圆形区域的填充颜色值
+        private val fillColor: String,
+        /// 圆形区域边框的颜色值
+        private val strokeColor: String,
+        /// 圆形区域边框的宽度
+        private val strokeWidth: Float,
+        /// 圆形区域半径
+        private val radius: Double
+){
+    fun applyTo(map: AMap){
+        map.addCircle(
+                CircleOptions().apply{
+                    center(this@UnifiedCircleOptions.center)
+                    fillColor(this@UnifiedCircleOptions.fillColor.hexStringToColorInt()?: Color.argb(100, 0, 0, 180))
+                    strokeColor(this@UnifiedCircleOptions.strokeColor.hexStringToColorInt()?: Color.argb(255, 0, 0, 220))
+                    strokeWidth(this@UnifiedCircleOptions.strokeWidth)
+                    radius(this@UnifiedCircleOptions.radius)
+                }
+        )
+    }
+
+}
+
+
 class UnifiedMyLocationStyle(
         // todo 实现自定义的图标
         /// 当前位置的图标

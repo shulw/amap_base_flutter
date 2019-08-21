@@ -7,6 +7,7 @@
 #import "MAPolyline.h"
 
 @class UnifiedMarkerOptions;
+@class UnifiedCircleOptions;
 @class LatLng;
 @class CameraPosition;
 @class UnifiedPolylineOptions;
@@ -17,6 +18,9 @@
 @property(nonatomic) UnifiedMarkerOptions *markerOptions;
 @end
 
+@interface CircleOverlay : MACircle
+@property(nonatomic) UnifiedCircleOptions *options;
+@end
 
 @interface PolylineOverlay : MAPolyline
 @property(nonatomic) UnifiedPolylineOptions *options;
@@ -131,6 +135,21 @@
 
 @end
 
+@interface UnifiedCircleOptions : NSObject
+/// 圆形区域 圆心坐标
+@property(nonatomic) LatLng *center;
+/// 圆形区域的填充颜色值
+@property(nonatomic) NSString *fillColor;
+/// 圆形区域边框的颜色值
+@property(nonatomic) NSString *strokeColor;
+/// 圆形区域边框的宽度
+@property(nonatomic) CGFloat strokeWidth;
+/// 圆形区域半径
+@property(nonatomic) NSInteger radius;
+
+- (NSString *)description;
+
+@end
 
 @interface UnifiedMyLocationStyle : NSObject
 /// 圆形区域（以定位位置为圆心，定位半径的圆形区域）的填充颜色值

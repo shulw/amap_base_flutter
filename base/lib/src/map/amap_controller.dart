@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:amap_base/amap_base.dart';
 import 'package:amap_base/src/common/log.dart';
 import 'package:amap_base/src/map/model/marker_options.dart';
+import 'package:amap_base/src/map/model/circle_options.dart';
 import 'package:amap_base/src/map/model/my_location_style.dart';
 import 'package:amap_base/src/map/model/polyline_options.dart';
 import 'package:amap_base/src/map/model/ui_settings.dart';
@@ -68,6 +69,15 @@ class AMapController {
         'markerOptionsList': _optionsListJson,
         'clear': clear,
       },
+    );
+  }
+
+  Future addCircle(CircleOptions options){
+    final _optionsJson = options.toJsonString();
+    L.p('addCircle dart端参数: _optionsJson -> $_optionsJson');
+    return _mapChannel.invokeMethod(
+      'marker#addCircle',
+      {'circleOptions': _optionsJson},
     );
   }
 
