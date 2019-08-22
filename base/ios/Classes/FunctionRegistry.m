@@ -22,7 +22,7 @@ static NSDictionary<NSString *, NSObject <MapMethodHandler> *> *_mapDictionary;
                 @"map#setUiSettings": [SetUiSettings alloc],
                 @"marker#addMarker": [AddMarker alloc],
                 @"marker#addMarkers": [AddMarkers alloc],
-                @"marker#addCircle": [AddMarkers alloc],
+                @"marker#addCircle": [addCircle alloc],
                 @"map#showIndoorMap": [ShowIndoorMap alloc],
                 @"map#setMapType": [SetMapType alloc],
                 @"map#setLanguage": [SetLanguage alloc],
